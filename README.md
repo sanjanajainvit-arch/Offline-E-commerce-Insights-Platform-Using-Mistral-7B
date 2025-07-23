@@ -97,6 +97,11 @@ Visit the API docs at [http://localhost:8000/docs](http://localhost:8000/docs)
 ```bash
 streamlit run ui.py
 ```
+
+### 💥 Launch the Streamlit UI
+```bash
+streamlit run ui.py
+```
 ---
 
 
