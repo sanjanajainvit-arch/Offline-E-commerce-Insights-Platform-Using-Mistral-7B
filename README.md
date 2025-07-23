@@ -101,7 +101,7 @@ streamlit run ui.py
 ```bash
 python cli.py
 ---
-
+```bash
 ## 🧠 Example Questions You Can Ask
 
 | Type                     | Example Question                                        |
