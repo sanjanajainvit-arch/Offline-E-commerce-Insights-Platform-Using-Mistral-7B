@@ -1,166 +1,218 @@
-text
-# E-commerce AI Agent
+# 🚀 Offline E-commerce Insights Platform Using Mistral 7B
 
-**Last updated:** July 23, 2025
+**Last Updated:** July 23, 2025  
+**Author:** [@sanjanajainvit-arch](https://github.com/sanjanajainvit-arch)
 
-## Overview
-
-The E-commerce AI Agent is an end-to-end intelligent data assistant and dashboard built with FastAPI and Streamlit. It lets you **ask natural language questions** about your Amazon-style ad sales, total sales, and product eligibility data. The system:
-- ***Translates questions into valid SQLite queries via an LLM backend (Mistral on Ollama)***
-- ***Executes those queries on CSV-backed SQLite tables***
-- ***Displays answers, generated SQL, and visualizations in a modern UI***
+> An intelligent, offline analytics system that empowers users to explore e-commerce sales and advertising data using natural language.
+This platform transforms plain English questions into accurate SQL queries using the Mistral 7B large language model via Ollama, executes them on local SQLite databases, and presents insights through an interactive Streamlit dashboard — all without requiring internet access or exposing sensitive data.
 
 ---
 
-## Features
+## 🌟 Key Features
 
-- **Natural Language Query**: Type any question about your sales or ads data.
-- **Automatic SQL Generation**: Your questions are converted to safe, interpretable SQLite queries by the LLM.
-- **SQL Output**: See the exact SQL run for transparency.
-- **Interactive Visualization**: Instantly visualize answers—metrics, charts, breakdowns.
-- **Product Eligibility Reasoning**: Understand which items are eligible for ads and why.
-- **REST API and Streamlit Dashboard**: Both programmatic and UI access to answers.
-- **File-based Storage**: All data is loaded from local CSVs into SQLite seamlessly.
+✅ **Natural Language Interface**  
+Ask questions like _"Which product had the highest ROAS last week?"_ — no SQL knowledge needed.
+
+✅ **LLM-Powered SQL Generation (Offline)**  
+Uses [Mistral 7B](https://ollama.com/library/mistral) via [Ollama](https://ollama.com/) to generate and execute SQLite queries, completely offline.
+
+✅ **Data Visualizations**  
+Auto-selects the best charts — bar, line, gauge — based on result types.
+
+✅ **Streamlit UI + FastAPI Backend**  
+Dual access for developers and business users — REST API + modern dashboard.
+
+✅ **Built-in Explainability**  
+The generated SQL query is always displayed for transparency and debugging.
+
+✅ **Supports Multiple Datasets**  
+Combines data from ads, sales, and product eligibility.
 
 ---
 
-## File Structure
+## 🗂️ Project Structure
 
+```
 .
-├── main.py # FastAPI backend (API server)
-├── ui.py # Streamlit interface (dashboard)
-├── ad_sales.csv # Ad sales data (in /data/)
-├── total_sales.csv # Total sales data (in /data/)
-├── eligibility.csv # Product eligibility data (in /data/)
-├── query_engine.py # Ties LLM, SQL generator, database, and formatter
-├── sql_generator.py # Adapts NL question → LLM → cleans/validates SQL
-├── llm_client.py # Talks to Ollama/Mistral to get SQL
-├── utils.py # CSV→SQLite loader, SQL execution utils
-├── requirement.txt # Python dependencies
-└── ...
-
+├── main.py               # FastAPI backend for LLM + query engine
+├── ui.py                 # Streamlit-based interactive dashboard
+├── query_engine.py       # SQL execution + formatting
+├── sql_generator.py      # Natural language → SQL via LLM
+├── llm_client.py         # Interface with Ollama (Mistral)
+├── utils.py              # Data loader: CSV → SQLite
+├── data/
+│   ├── ad_sales.csv      # Ad campaign metrics
+│   ├── total_sales.csv   # Overall product sales
+│   └── eligibility.csv   # Eligibility flags + reasons
+├── assets/               # 📷 Screenshots & visual samples
+├── requirements.txt      # All required Python packages
+└── README.md
+```
 
 ---
 
-## Installation
+## ⚙️ Installation & Setup
 
-1. **Clone the Repository**
+### 1⃣️ Clone the Repo
+```bash
+git clone https://github.com/sanjanajainvit-arch/Offline-E-commerce-Insights-Platform-Using-Mistral-7B.git
+cd Offline-E-commerce-Insights-Platform-Using-Mistral-7B
+```
 
-2. **Install Dependencies**
-pip install -r requirement.txt
+### 2⃣️ Install Dependencies
+```bash
+pip install -r requirements.txt
+```
 
-text
+### 3⃣️ Prepare Your Data
+Ensure the following files exist inside a `data/` folder:
+- `ad_sales.csv`
+- `total_sales.csv`
+- `eligibility.csv`
 
-3. **Prepare Data**
-- Place `ad_sales.csv`, `total_sales.csv`, `eligibility.csv` in a `data/` folder at the project root.
-
-4. **(Optional) Start Ollama with Mistral model**
-- [See: https://ollama.com/](https://ollama.com/)
-- Required for LLM-powered SQL generation.
-
-5. **Load Data into SQLite**
+Then load them into SQLite:
+```bash
 python utils.py
+```
 
-text
+### 4⃣️ Run Ollama with Mistral
+```bash
+ollama run mistral
+```
+
+> _Tip: Install [Ollama](https://ollama.com) and pull the `mistral` model if not already available._
 
 ---
 
-## Running
+## 🚀 Running the App
 
-**Backend API**
+### 🔧 Start the FastAPI Backend
+```bash
 uvicorn main:app --reload
+```
+Visit the API docs at [http://localhost:8000/docs](http://localhost:8000/docs)
 
-API docs: http://localhost:8000/docs
-text
-
-**Streamlit Dashboard**
+### 💥 Launch the Streamlit UI
+```bash
 streamlit run ui.py
-
-text
+```
 
 ---
 
-## API Usage
+## 🧠 Example Questions You Can Ask
+
+| Type                     | Example Question                                        |
+|--------------------------|--------------------------------------------------------|
+| Sales Summary            | What is my total sales?                                |
+| Time-based Trend         | What is my total sales each day in June?              |
+| ROAS / Conversion        | What is the conversion rate on 2025-06-01?             |
+| Product Performance      | Which item has the highest ad spend?                   |
+| Eligibility Analysis     | Which products were ineligible for ads last week?      |
+| CPC/CTR/Spend Insights   | What is the average CPC per item?                      |
+| Breakdown                | Show total units sold per item                         |
+
+---
+
+## 🤠 How Does It Work?
+
+1. **User asks a question (UI or API)**
+2. **LLM (Mistral 7B) converts it into SQL**
+3. **Query is validated and run on SQLite**
+4. **Formatted answer and visualization are generated**
+5. **Generated SQL is shown for transparency**
+
+---
+
+## 📊 Sample Visuals
+
+### 🔍 What is the conversion rate per item on 2025-06-01?
+![Bar Chart](assets/bar_chart.jpg)
+
+---
+
+### 📈 What is my total sales each day in June?
+![Time Series](assets/time_series.jpg)
+
+---
+
+### 🧼 What is my total sales?
+![Gauge](assets/total_sales.jpg)
+
+---
+
+## 🔐 Security & Safety
+
+- SQL from the LLM is **sanitized & validated** (`SELECT`-only, no destructive queries).
+- Local-only SQLite execution — **no internet or cloud dependency.**
+- No user-written queries allowed directly.
+
+---
+
+## 🔄 API Reference
 
 ### POST `/query`
-Submit a question and get an answer, SQL, and results.
+Submit a natural language question to the backend.
 
-#### Request:
+**Request:**
+```json
 {
-"question": "What is my total sales?"
+  "question": "What is my total sales?"
 }
+```
 
-
-
-#### Response:
+**Response:**
+```json
 {
-"question": "...",
-"answer": "...",
-"results": [...],
-"sql": "SELECT ...;",
-"status": "success"
+  "question": "...",
+  "answer": "...",
+  "results": [...],
+  "sql": "SELECT ...;",
+  "status": "success"
 }
-
-
-
-*The response always includes the generated SQL query.*
-
-![Question: What is the conversion rate per item on 2025-06-01? ](assets/bar_chart.jpg)
-
-![Question: What is my total sales each day in June](assets/time_series.jpg)
-
-![Question: What is my total sales?](assets/total_sales.jpg)
+```
 
 ---
 
-## How is the SQL Displayed?
+## 💡 Customizing
 
-- **Backend**: `query_engine.py`’s `handle_question()` function includes the generated SQL string in every response under the `"sql"` key.
-- **Streamlit UI**: The UI will always show the "📄 View Generated SQL" expander, so users see the SQL for each answer.
-
----
-
-## Data Sources
-
-- **ad_sales.csv**: Per-item, per-day ad impressions, spend, clicks, units sold, and ad-attributed sales.
-- **total_sales.csv**: Per-item, per-day total sales and orders, whether ad-driven or not.
-- **eligibility.csv**: Per-item, per-day eligibility for advertising, with reasons for rejection.
+- Swap out Mistral with another LLM in `llm_client.py`
+- Add more prompt examples to `sql_generator.py` for better accuracy
+- Enhance visual logic in `ui.py` (e.g., Pie charts, filters)
 
 ---
 
-## Security Notes
+## 🛠️ Requirements
 
-- The LLM-generated SQL is validated and sanitized before execution (see `validate_sql()` in `query_engine.py`).
-- SQL queries and parameters are never written by the user directly.
-- **NEVER expose this app with public write access without securing it.**
+> See `requirements.txt`
 
----
-
-## Requirements
-
-- See `requirement.txt`
-  - fastapi
-  - uvicorn
-  - pydantic
-  - pandas
-  - requests
-  - (streamlit, altair, plotly, if using dashboard)
+```
+fastapi
+uvicorn
+pydantic
+pandas
+requests
+streamlit
+altair
+plotly
+```
 
 ---
 
-## Customizing
+## ❓ Troubleshooting
 
-- Tune which model Ollama runs in `llm_client.py` (`MODEL = "mistral"`)
-- Add more sample questions/answers in `sql_generator.py`'s prompt as needed
-- Replace data sources by adding to your local `data/` directory
-
----
-
-## Troubleshooting
-
-- **LLM errors**: Ensure Ollama is running and the API endpoint matches.
-- **Data not loading**: Ensure CSVs are in `data/` and re-run `python utils.py`.
-- **SQL errors**: The system checks for malformed or unsafe SQL and will report problems in the UI/API responses.
+| Problem                        | Fix                                                              |
+|-------------------------------|------------------------------------------------------------------|
+| SQL errors                    | Ensure LLM returns valid SQL, see logs in `query_engine.py`      |
+| Data not loading              | Re-run `python utils.py` and verify CSV paths                    |
+| Ollama not responding         | Restart Ollama, verify model is pulled (`ollama run mistral`)    |
+| No visualizations appearing   | Ensure Streamlit is installed and data is non-empty              |
 
 ---
 
+## ⭐ Acknowledgements
+
+- [Mistral 7B](https://mistral.ai/)
+- [Ollama](https://ollama.com/)
+- [Streamlit](https://streamlit.io/)
+- [FastAPI](https://fastapi.tiangolo.com/)
+- [Altair](https://altair-viz.github.io/) & [Plotly](https://plotly.com/)
