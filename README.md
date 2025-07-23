@@ -3,7 +3,8 @@
 **Last Updated:** July 23, 2025  
 **Author:** [@sanjanajainvit-arch](https://github.com/sanjanajainvit-arch)
 
-> A powerful, privacy-respecting analytics platform for e-commerce datasets that converts natural language into SQL, powered by **Mistral 7B LLM** and **SQLite** — all running fully offline.
+> An intelligent, offline-first analytics system that empowers users to explore e-commerce sales and advertising data using natural language.
+This platform transforms plain English questions into accurate SQL queries using the Mistral 7B large language model via Ollama, executes them on local SQLite databases, and presents insights through an interactive Streamlit dashboard — all without requiring internet access or exposing sensitive data.
 
 ---
 
