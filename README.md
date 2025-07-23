@@ -47,6 +47,7 @@ Combines data from ads, sales, and product eligibility.
 ├── assets/               # 📷 Screenshots & visual samples
 ├── requirements.txt      # All required Python packages
 └── README.md
+|__ cli.py                # To run directly in cli
 ```
 
 ---
@@ -96,7 +97,9 @@ Visit the API docs at [http://localhost:8000/docs](http://localhost:8000/docs)
 ```bash
 streamlit run ui.py
 ```
-
+### 💥 To run in CLI
+```bash
+python cli.py
 ---
 
 ## 🧠 Example Questions You Can Ask
@@ -119,7 +122,7 @@ streamlit run ui.py
 2. **LLM (Mistral 7B) converts it into SQL**
 3. **Query is validated and run on SQLite**
 4. **Formatted answer and visualization are generated**
-5. **Generated SQL is shown for transparency**
+5. **Generated SQL is shown**
 
 ---
 
