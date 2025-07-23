@@ -1,5 +1,5 @@
 text
-# E-commerce AI Agent
+# Offline-E-commerce-Insights-Platform-Using-Mistral-7B
 
 **Last updated:** July 23, 2025
 
@@ -103,7 +103,7 @@ Submit a question and get an answer, SQL, and results.
 
 
 
-*The response always includes the generated SQL query.*
+*The response always includes the generated SQL query and visualisations like shown below*
 
 ![Question: What is the conversion rate per item on 2025-06-01? ](assets/bar_chart.jpg)
 
