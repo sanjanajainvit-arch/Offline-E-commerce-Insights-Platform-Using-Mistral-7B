@@ -209,12 +209,6 @@ plotly
 
 ---
 
-## 📢 License
-
-This project is for educational and internal use. Add your preferred license here (e.g., MIT, Apache 2.0).
-
----
-
 ## ⭐ Acknowledgements
 
 - [Mistral 7B](https://mistral.ai/)
