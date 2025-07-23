@@ -1,4 +1,3 @@
-text
 # Offline-E-commerce-Insights-Platform-Using-Mistral-7B
 
 **Last updated:** July 23, 2025
